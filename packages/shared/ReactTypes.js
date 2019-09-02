@@ -107,9 +107,6 @@ export type ReactEventResponder<E, C> = {
     | ((event: E, context: C, props: Object, state: Object) => void),
   onMount: null | ((context: C, props: Object, state: Object) => void),
   onUnmount: null | ((context: C, props: Object, state: Object) => void),
-  onOwnershipChange:
-    | null
-    | ((context: C, props: Object, state: Object) => void),
 };
 
 export type EventPriority = 0 | 1 | 2;
@@ -161,4 +158,20 @@ export type ReactFundamentalImpl<C, H> = {
 export type ReactFundamentalComponent<C, H> = {|
   $$typeof: Symbol | number,
   impl: ReactFundamentalImpl<C, H>,
+|};
+
+export type ReactScope = {|
+  $$typeof: Symbol | number,
+  fn: (type: string | Object, props: Object) => boolean,
+|};
+
+export type ReactScopeMethods = {|
+  getChildren(): null | Array<ReactScopeMethods>,
+  getParent(): null | ReactScopeMethods,
+  getScopedNodes(): null | Array<Object>,
+|};
+
+export type ReactScopeInstance = {|
+  fiber: Object,
+  methods: null | ReactScopeMethods,
 |};

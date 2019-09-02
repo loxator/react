@@ -19,7 +19,6 @@ export const {
   disableInputAttributeSyncing,
   warnAboutShorthandPropertyCollision,
   warnAboutDeprecatedSetNativeProps,
-  revertPassiveEffectsChange,
   enableUserBlockingEvents,
   disableLegacyContext,
   disableSchedulerTimeoutBasedOnReactExpirationTime,
@@ -73,6 +72,8 @@ function updateFlagOutsideOfReactCallStack() {
 export const enableFlareAPI = true;
 
 export const enableFundamentalAPI = false;
+
+export const enableScopeAPI = true;
 
 export const enableJSXTransformAPI = true;
 
